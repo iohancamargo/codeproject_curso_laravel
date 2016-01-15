@@ -3,7 +3,7 @@
 namespace CodeProject\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-
+use LucaDegasperi;
 class Kernel extends HttpKernel
 {
     /**
@@ -15,6 +15,7 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+        \LucaDegasperi\OAuth2Server\Middleware\OAuthExceptionHandlerMiddleware::class,
     ];
 
     /**
@@ -49,5 +50,8 @@ class Kernel extends HttpKernel
         'guest' => \CodeProject\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'csrf' => \CodeProject\Http\Middleware\VerifyCsrfToken::class,
+        'oauth' => \LucaDegasperi\OAuth2Server\Middleware\OAuthMiddleware::class,
+        'oauth-owner' => \LucaDegasperi\OAuth2Server\Middleware\OAuthOwnerMiddleware::class,
+        'check-authorization-params' => \LucaDegasperi\OAuth2Server\Middleware\CheckAuthCodeRequestMiddleware::class
     ];
 }
