@@ -11,6 +11,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    // protected $table = 'Users';
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -23,4 +24,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class,'project_members','member_id','project_id');
+    }
+
 }

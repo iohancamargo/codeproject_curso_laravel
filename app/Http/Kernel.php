@@ -52,6 +52,7 @@ class Kernel extends HttpKernel
         'csrf' => \CodeProject\Http\Middleware\VerifyCsrfToken::class,
         'oauth' => \LucaDegasperi\OAuth2Server\Middleware\OAuthMiddleware::class,
         'oauth-owner' => \LucaDegasperi\OAuth2Server\Middleware\OAuthOwnerMiddleware::class,
-        'check-authorization-params' => \LucaDegasperi\OAuth2Server\Middleware\CheckAuthCodeRequestMiddleware::class
+        'check-authorization-params' => \LucaDegasperi\OAuth2Server\Middleware\CheckAuthCodeRequestMiddleware::class,
+        'CheckProjectOwner' => \CodeProject\Http\Middleware\CheckProjectOwner::class
     ];
 }
